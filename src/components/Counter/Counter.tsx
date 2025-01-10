@@ -1,37 +1,44 @@
-import Button from "../Button/Button";
-import "./styles.ts";
-import {CounterProps} from './types.ts'
-///Шаг 1 вызов хука из React
-/* import { useState } from "react"; */
-import { CounterContainer, ButtonWrapper, CounterResult } from "./styles.ts";
+import Button from "../Button/Button"
+import "./styles.ts"
+import { ButtonWrapper, CounterContainer, CounterResult } from "./styles"
 
-function Counter({countValue, onMinus, onPlus}: CounterProps) {
-    //Шаг 2 вызываем хук и передаем в него начальное состояние(initialState)
-    //делаеммдеструктуризацию массива из двух элементов, который возвращает хук useState
-    /* const [count, setCount] = useState<number | undefined>(0); */
-    /* const [count, setCount] = useState<number>(0); */
+// 9. Импортируем хуки для диспатча и селекторов
+import { useAppDispatch, useAppSelector } from "../../store/hooks"
+// 10. Импортируем экшены и селекторы, которые были созданы и экспортированы в  файле со слайсом
+import {
+  counterSliceActions,
+  counterSliceSelectors,
+} from "../../store/redux/counter/counterSlice"
 
+function Counter() {
+  //11. Забираем значение count из store
+  const count = useAppSelector(counterSliceSelectors.count)
+  console.log(count)
 
-    //Шаг 3 - необходимо прописать функции, которые будут менять состояние. Внутри этих функций нужно использовать setCount
-    /* const onPlusClick = (): void => {
-        setCount((preValue) => preValue + 1);
-    };
+  //12. Сохраняем функцию dispatch, которую возвращает хук useAppDispatch
+  const dispatch = useAppDispatch()
 
-    const onMinusClick = (): void => {
-        setCount((preValue) => preValue - 1);
-    }; */
+  const onMinus = () => {
+    //13. Диспатчим экшен (идентификатор действия) , который вызовет соответствующий редьюсер
+    dispatch(counterSliceActions.minus())
+  }
 
-    return (
-        <CounterContainer>
-            <ButtonWrapper>
-                <Button buttonName="-" onClick={onMinus} />
-            </ButtonWrapper>
-            <CounterResult>{countValue}</CounterResult>
-            <ButtonWrapper>
-                <Button buttonName="+" onClick={onPlus} />
-            </ButtonWrapper>
-        </CounterContainer>
-    );
+    const onPlus = () => {
+        //13. Диспатчим экшен (идентификатор действия) , который вызовет соответствующий редьюсер
+        dispatch(counterSliceActions.plus())
+    }
+
+  return (
+    <CounterContainer>
+      <ButtonWrapper>
+        <Button buttonName="-" onClick={onMinus} />
+      </ButtonWrapper>
+      <CounterResult>{count}</CounterResult>
+      <ButtonWrapper>
+        <Button buttonName="+" onClick={onPlus} />
+      </ButtonWrapper>
+    </CounterContainer>
+  )
 }
 
-export default Counter;
+export default Counter

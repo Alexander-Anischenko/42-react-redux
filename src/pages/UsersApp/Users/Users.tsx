@@ -1,0 +1,32 @@
+import { UsersPageWrapper, UserCard, Paragraph } from "./styles"
+import { usersSliceSelectors} from "../../../store/redux/users/usersSlice"
+import { useAppSelector } from "../../../store/hooks"
+import { v4 } from "uuid";
+
+function Users() {
+  // 12. Сохраняем данные пользователей из стейта в переменную
+  const userData = useAppSelector(usersSliceSelectors.users);
+  console.log(userData);
+
+  // с помощью метода map создаем карточки пользователей на основе данных из стейта и присваиваем каждой карточке уникальный ключ с помощью библиотеки uuid, 
+  // возвращаем карточки пользователей
+  const userCards = userData.map((user) => {
+    return (
+      <UserCard key={v4()}>
+        <Paragraph>Name: {user.userName}</Paragraph>
+        <Paragraph>Age: {user.age}</Paragraph>
+        <Paragraph>Job Title: {user.jobTitle}</Paragraph>
+      </UserCard>
+    )
+  })
+  
+ 
+  // 14. Вы
+  return (
+    <UsersPageWrapper>
+      {userCards}
+    </UsersPageWrapper>
+  )
+}
+
+export default Users

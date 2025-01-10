@@ -24,7 +24,9 @@ export const counterSlice = createAppSlice({
   }),
   // 6. Создаем селекторы, которые позволяют забирать данные из стейта в компонент
   selectors: {
+    //называть селекторы можно как угодно, но лучше называть так, чтобы было понятно, что они делают
     count: (state: CounterStateSlice) => state.count,
+    //counter: (state: CounterStateSlice) => state.count,
   },
 })
 
