@@ -16,10 +16,10 @@ export const likeCounterSlice = createAppSlice({
   initialState: likeCounterInitialState,
   // 5. Создаем объект, внутри которого будут храниться редьюсеры(функции, которые отвечают за изменение состояния)
   reducers: create => ({
-    like: create.reducer((state: LikeCounterStateSlice) => {
+    addLike: create.reducer((state: LikeCounterStateSlice) => {
       state.likes = state.likes + 1
     }),
-    dislike: create.reducer((state: LikeCounterStateSlice) => {
+    addDislike: create.reducer((state: LikeCounterStateSlice) => {
       state.dislikes = state.dislikes + 1
     }),
     reset: create.reducer((state: LikeCounterStateSlice) => {

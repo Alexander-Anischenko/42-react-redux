@@ -22,12 +22,12 @@ function Feedback() {
 
     const onLike = () => {
         //13. Диспатчим экшен (идентификатор действия) , который вызовет соответствующий редьюсер
-        dispatch(likeCounterSliceActions.like())
+        dispatch(likeCounterSliceActions.addLike())
     }
 
     const onDislike = () => {
         //13. Диспатчим экшен (идентификатор действия) , который вызовет соответствующий редьюсер
-        dispatch(likeCounterSliceActions.dislike())
+        dispatch(likeCounterSliceActions.addDislike())
     }
 
     const onReset = () => {
