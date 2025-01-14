@@ -13,9 +13,10 @@ import Button from "../Button/Button";
 
 function Feedback() {
     //11. Забираем значение лайков и дизлайков из store
-    const likes = useAppSelector(likeCounterSliceSelectors.likes);
+    /* const likes = useAppSelector(likeCounterSliceSelectors.likes);
     const dislikes = useAppSelector(likeCounterSliceSelectors.dislikes);
-    console.log(likes, dislikes)
+    console.log(likes, dislikes) */
+    const {likes, dislikes} = useAppSelector(likeCounterSliceSelectors.feedbackData);       
     
     //12. Сохраняем функцию dispatch, которую возвращает хук useAppDispatch
     const dispatch = useAppDispatch()

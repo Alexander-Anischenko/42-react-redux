@@ -22,18 +22,25 @@ export const likeCounterSlice = createAppSlice({
     addDislike: create.reducer((state: LikeCounterStateSlice) => {
       state.dislikes = state.dislikes + 1
     }),
-    reset: create.reducer((state: LikeCounterStateSlice) => {
+    /* reset: create.reducer((state: LikeCounterStateSlice) => {
       state.likes = 0
       state.dislikes = 0
-    }),
+    }), */
+    reset: create.reducer(()=>likeCounterInitialState),
     
   }),
   // 6. Создаем селекторы, которые позволяют забирать данные из стейта в компонент
-  selectors: {
+  /* selectors: {
     likes: (state: LikeCounterStateSlice) => state.likes,
     dislikes: (state: LikeCounterStateSlice) => state.dislikes,
   },
-})
+}) */
+selectors: {
+  feedbackData: (state: LikeCounterStateSlice) => state,
+  }
+  
+},
+)
 
 //7. Экспорт экшенов и селекторов для возможносит их использования в компонентах
 export const likeCounterSliceActions = likeCounterSlice.actions
