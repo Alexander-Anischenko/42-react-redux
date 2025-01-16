@@ -4,11 +4,12 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 import { counterSlice } from "./redux/counter/counterSlice"
 import { usersSlice } from "./redux/users/usersSlice"
 import { likeCounterSlice } from "./redux/likeCounter/likeCounterSlice"
+import { randomJokesSlice } from "./redux/randomJokes/randomJokesSlice"
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
 // 8. Передаем созданные слайсы в функцию combineSlices
-const rootReducer = combineSlices(counterSlice, usersSlice, likeCounterSlice) //кусочки пирога собранные вместе
+const rootReducer = combineSlices(counterSlice, usersSlice, likeCounterSlice, randomJokesSlice) //кусочки пирога собранные вместе
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
 
