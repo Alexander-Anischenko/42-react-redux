@@ -2,7 +2,7 @@ import axios from "axios"
 import { createAppSlice } from "../../createAppSlice"
 import type { RandomJokesSliceState, RandomJoke } from "./types"
 import { v4 } from "uuid"
-import { PayloadAction } from "@reduxjs/toolkit"
+import type { PayloadAction } from "@reduxjs/toolkit"
 
 const randomJokesInitialState: RandomJokesSliceState = {
   data: [],
